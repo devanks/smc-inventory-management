@@ -16,43 +16,43 @@
 	</div>
 		<script type="text/javascript" src="{% static 'js/chartFile.min.js' %}" defer="defer"></script>
 {% endblock %}
-{% block result_list %}
+<!-- {% block result_list %} -->
 
-    <div class=”results” style="width:80%" onload="displayRenderGraphButton()">
+    <!-- <div class=”results” style="width:80%" onload="displayRenderGraphButton()"> -->
 
-		<H2>Results</H2>
-		<table>
-			<thead>
-			  <tr>
-				<th>
-				  <div class=”text”>
-					<a href=”#”>Department</a>
-				  </div>
-				</th>
-				<th>
-				  <div class=”text”>
-					<a href=”#”>Device</a>
-				  </div>
-				</th>
-				<th>
-				  <div class=”text”>
-					<a href=”#”>Total</a>
-				  </div>
-				</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  {% for row in cl %}
-			  <tr class="{% cycle 'row1' 'row2' %}">
-				<td> <a href="{%url 'admin:inventoryManagement_record_changelist' %}?department={{ row.department }}"> {{ row.department }} </a></td>
-				<td> <a href="{%url 'admin:inventoryManagement_record_changelist' %}?department={{ row.department }}&device__exact={{ row.device }}"> {{ row.device }} </a> </td>
-				<td> {{ row.total | intcomma }} </td>
-			  </tr>
-			  {% endfor %}
-			</tbody>
+		<!-- <H2>Results</H2> -->
+		<!-- <table> -->
+			<!-- <thead> -->
+			  <!-- <tr> -->
+				<!-- <th> -->
+				  <!-- <div class=”text”> -->
+					<!-- <a href=”#”>Department</a> -->
+				  <!-- </div> -->
+				<!-- </th> -->
+				<!-- <th> -->
+				  <!-- <div class=”text”> -->
+					<!-- <a href=”#”>Device</a> -->
+				  <!-- </div> -->
+				<!-- </th> -->
+				<!-- <th> -->
+				  <!-- <div class=”text”> -->
+					<!-- <a href=”#”>Total</a> -->
+				  <!-- </div> -->
+				<!-- </th> -->
+			  <!-- </tr> -->
+			<!-- </thead> -->
+			<!-- <tbody> -->
+			  <!-- {% for row in cl %} -->
+			  <!-- <tr class="{% cycle 'row1' 'row2' %}"> -->
+				<!-- <td> <a href="{%url 'admin:inventoryManagement_record_changelist' %}?department={{ row.department }}"> {{ row.department }} </a></td> -->
+				<!-- <td> <a href="{%url 'admin:inventoryManagement_record_changelist' %}?department={{ row.department }}&device__exact={{ row.device }}"> {{ row.device }} </a> </td> -->
+				<!-- <td> {{ row.total | intcomma }} </td> -->
+			  <!-- </tr> -->
+			  <!-- {% endfor %} -->
+			<!-- </tbody> -->
 		
-		</table>
-	</div>
+		<!-- </table> -->
+	<!-- </div> -->
 
-{% endblock %}
-{% block pagination %}{% endblock %}
+<!-- {% endblock %} -->
+<!-- {% block pagination %}{% endblock %} -->
