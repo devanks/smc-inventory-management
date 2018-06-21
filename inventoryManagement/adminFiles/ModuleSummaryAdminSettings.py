@@ -18,6 +18,6 @@ class recordSummaryAdmin(admin.ModelAdmin):
             qs = response.context_data['cl'].queryset
         except (AttributeError, KeyError):
             return response
-	
-        response.context_data['cl'].queryset = qs.values('department','device').annotate(total=Count('id')).order_by('total')
+        queryset = list(qs.values('department','device').annotate(total=Count('id')).order_by('total'))
+        response.context_data['cl'].queryset = queryset
         return response
