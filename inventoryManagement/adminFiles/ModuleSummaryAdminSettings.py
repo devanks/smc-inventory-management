@@ -1,7 +1,15 @@
 from django.contrib import admin
 from django.db.models import Count
 
+# <<<<<<< HEAD
+# <<<<<<< HEAD
+# from .ListFilterAdminSettings import InputFilter #Custom filter list
+# from .ListFilterAdminSettings import DepartmentFilter
 
+# =======
+# >>>>>>> parent of 0784a0e... Change filter
+# =======
+# >>>>>>> parent of 0784a0e... Change filter
 class recordSummaryAdmin(admin.ModelAdmin):
     change_list_template = 'admin/record_summary_change_list.html'
     list_display = ['department', 'device']
@@ -19,5 +27,10 @@ class recordSummaryAdmin(admin.ModelAdmin):
         except (AttributeError, KeyError):
             return response
 	
-        response.context_data['cl'].queryset = qs.values('department','device').annotate(total=Count('id')).order_by('total')
+        response.context_data['summary'] = list(
+        qs
+        .values('department','device')
+        .annotate(total=Count('id'))
+        .order_by('total')
+        )
         return response
