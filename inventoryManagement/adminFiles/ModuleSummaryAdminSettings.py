@@ -3,7 +3,7 @@ from django.db.models import Count
 
 
 class recordSummaryAdmin(admin.ModelAdmin):
-    change_list_template = 'admin/record_summary_change_list.html'
+    # change_list_template = 'admin/record_summary_change_list.html'
     list_display = ['department', 'device']
     list_filter = (
         'device','department','year'
