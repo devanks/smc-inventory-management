@@ -35,8 +35,5 @@ class recordSummaryAdmin(admin.ModelAdmin):
         """
         qs = self.model._default_manager.get_queryset()
         # TODO: this should be handled by some parameter to the ChangeList.
-        qs = qs
-        .values('department','device')
-        .order_by('total')
-        .annotate(total=Count('id'))
+        qs = qs.values('department','device').annotate(total=Count('id')).order_by('total')
         return qs
