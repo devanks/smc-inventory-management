@@ -28,9 +28,12 @@ class recordSummaryAdmin(admin.ModelAdmin):
         )
         return response
     """
-    """
     def get_queryset(self, request):
+        """
+        Return a QuerySet of all model instances that can be edited by the
+        admin site. This is used by changelist_view.
+        """
         qs = self.model._default_manager.get_queryset()
+        # TODO: this should be handled by some parameter to the ChangeList.
         qs = qs.values('department','device').annotate(total=Count('id')).order_by('total')
         return qs
-    """
