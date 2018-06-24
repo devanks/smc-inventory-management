@@ -1,15 +1,7 @@
 from django.contrib import admin
 from django.db.models import Count
 
-# <<<<<<< HEAD
-# <<<<<<< HEAD
-# from .ListFilterAdminSettings import InputFilter #Custom filter list
-# from .ListFilterAdminSettings import DepartmentFilter
 
-# =======
-# >>>>>>> parent of 0784a0e... Change filter
-# =======
-# >>>>>>> parent of 0784a0e... Change filter
 class recordSummaryAdmin(admin.ModelAdmin):
     change_list_template = 'admin/record_summary_change_list.html'
     list_display = ['department', 'device']
@@ -17,6 +9,7 @@ class recordSummaryAdmin(admin.ModelAdmin):
         'device','department','year'
     )
     show_full_result_count = False
+    """
     def changelist_view(self, request, extra_context=None):
         response = super().changelist_view(
         request,
@@ -34,3 +27,16 @@ class recordSummaryAdmin(admin.ModelAdmin):
         .order_by('total')
         )
         return response
+    """
+    def get_queryset(self, request):
+        """
+        Return a QuerySet of all model instances that can be edited by the
+        admin site. This is used by changelist_view.
+        """
+        qs = self.model._default_manager.get_queryset()
+        # TODO: this should be handled by some parameter to the ChangeList.
+        qs = qs
+        .values('department','device')
+        .order_by('total')
+        .annotate(total=Count('id'))
+        return qs
