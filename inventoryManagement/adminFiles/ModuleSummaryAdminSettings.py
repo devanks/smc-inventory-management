@@ -3,13 +3,13 @@ from django.db.models import Count
 
 
 class recordSummaryAdmin(admin.ModelAdmin):
-    # change_list_template = 'admin/record_summary_change_list.html'
+    change_list_template = 'admin/record_summary_change_list.html'
     list_display = ['department', 'device']
     list_filter = (
         'device','department','year'
     )
     show_full_result_count = False
-    """
+
     def changelist_view(self, request, extra_context=None):
         response = super().changelist_view(
         request,
@@ -181,3 +181,4 @@ class recordSummaryAdmin(admin.ModelAdmin):
             'admin/%s/change_list.html' % app_label,
             'admin/change_list.html'
         ], context)
+    """
