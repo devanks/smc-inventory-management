@@ -1,21 +1,12 @@
 from django.contrib import admin
 from django.db.models import Count
 
-from .filters import SingleTextInputFilter
-
-class DepartmentFilter(SingleTextInputFilter):
-    title = 'Department'
-    parameter_name = 'department'
-
-    def queryset(self, request, queryset):
-        if self.value():
-            return queryset.filter(department__iexact=self.value())
 
 class recordSummaryAdmin(admin.ModelAdmin):
     change_list_template = 'admin/record_summary_change_list.html'
     list_display = ['department', 'device']
     list_filter = (
-        'device',DepartmentFilter,'year'
+        'device','department','year'
     )
     show_full_result_count = False
 
