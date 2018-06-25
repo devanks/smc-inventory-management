@@ -1,49 +1,7 @@
 {% load i18n %}
-<style>
-	.dropbtn {
-		background-color: #4CAF50;
-		color: white;
-		padding: 16px;
-		font-size: 16px;
-		border: none;
-		cursor: pointer;
-	}
-
-	.dropbtn:hover, .dropbtn:focus {
-		background-color: #3e8e41;
-	}
-
-	.dropdown {
-		position: relative;
-		display: inline-block;
-	}
-
-	.dropdown-content {
-		display: none;
-		position: absolute;
-		background-color: #f6f6f6;
-		min-width: 230px;
-		overflow: auto;
-		border: 1px solid #ddd;
-		z-index: 1;
-	}
-
-	.dropdown-content a {
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-	}
-
-	.dropdown a:hover {background-color: #ddd;}
-
-	.show {display: block;}
-</style>
-
-
 <h3>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h3>
 <div class="dropdown">
-	<input onclick="toggleDropdown(this)" type="text" placeholder="Search.." id="searchbar" onkeyup="filterFunction(this)">
+	<input onclick="toggleDropdown(this)" type="text" style="margin: 0 15px;margin-bottom: 10px;" placeholder="Search.." id="searchbar" onkeyup="filterFunction(this)">
 	<div id="filterProbableDropdownList" class="dropdown-content">
 		<ul>
 		{% for choice in choices %}
@@ -54,24 +12,3 @@
 		</ul>
 	</div>
 </div>
-<script>
-function toggleDropdown(selEle) {
-	document.getElementsByClass("dropdown-content").style.display = "none";
-    selEle.nextElementSibling.classList.toggle("show");
-}
-
-function filterFunction(selEle) {
-    var input, filter, ul, li, a, i;
-    input = selEle;
-    filter = input.value.toUpperCase();
-    div = selEle.nextElementSibling;
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
-</script>
