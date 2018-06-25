@@ -1,6 +1,12 @@
 function toggleDropdown(selEle) {
-	document.getElementsByClass("dropdown-content").style.display = "none";
-    selEle.nextElementSibling.classList.toggle("show");
+	elementToToggle = selEle.nextElementSibling;
+	allDropdowns = document.getElementsByClassName("dropdown-content");
+	for(i = 0; i < allDropdowns.length; i++)
+	{
+		if(elementToToggle != allDropdowns[i] && allDropdowns[i].classList.contains("show"))
+			allDropdowns[i].classList.toggle("show");
+    }
+    elementToToggle.classList.toggle("show");
 }
 
 function filterFunction(selEle) {
@@ -9,7 +15,8 @@ function filterFunction(selEle) {
     filter = input.value.toUpperCase();
     div = selEle.nextElementSibling;
     a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
+    for (i = 0; i < a.length; i++)
+	{
         if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
         } else {
