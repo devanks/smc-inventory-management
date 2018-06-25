@@ -1,3 +1,4 @@
+{% load i18n %}
 <style>
 	.dropbtn {
 		background-color: #4CAF50;
@@ -11,19 +12,6 @@
 	.dropbtn:hover, .dropbtn:focus {
 		background-color: #3e8e41;
 	}
-
-	#myInput {
-		border-box: box-sizing;
-		background-image: url('searchicon.png');
-		background-position: 14px 12px;
-		background-repeat: no-repeat;
-		font-size: 16px;
-		padding: 14px 20px 12px 45px;
-		border: none;
-		border-bottom: 1px solid #ddd;
-	}
-
-	#myInput:focus {outline: 3px solid #ddd;}
 
 	.dropdown {
 		position: relative;
@@ -55,7 +43,7 @@
 
 <h3>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h3>
 <div class="dropdown">
-	<input onclick="toggleDropdown(this)" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction(this)">
+	<input onclick="toggleDropdown(this)" type="text" placeholder="Search.." id="searchbar" onkeyup="filterFunction(this)">
 	<div id="filterProbableDropdownList" class="dropdown-content">
 		<ul>
 		{% for choice in choices %}
